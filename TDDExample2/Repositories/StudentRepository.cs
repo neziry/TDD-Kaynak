@@ -8,16 +8,23 @@ namespace TDDExample2.Repositories
 {
     public class StudentRepository : IStudentRepository
     {
-        public List<Student> GetStudentListByGradeAverage(int average)
+        public List<Student> GetStudentListByGradeAverage(float average)
         {
             if (average == 0)
             {
                 throw new ThereIsNoStudentException();
             }
-
             using(var context = new StudentDbContext())
             {
                 return context.Students.Where(x => x.Average == average).ToList();
+            }
+        }
+
+        public List<Student> GetStudents()
+        {
+            using (var context = new StudentDbContext())
+            {
+                return context.Students.ToList();
             }
         }
     }

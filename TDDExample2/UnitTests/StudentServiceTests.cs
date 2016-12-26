@@ -27,21 +27,57 @@ namespace TDDExample2.UnitTests
     [TestFixture]
     public class StudentServiceTests
     {
+        private IStudentRepository _studentRepository;
+        private readonly Mock<IStudentRepository> _mockStudentRepository;
+        private List<Student> _students;
+
+        public StudentServiceTests()
+        {
+            _mockStudentRepository = new Mock<IStudentRepository>();
+        }
+
+
+        [SetUp]
+        public void BeforeRun()
+        {
+            _studentRepository = _mockStudentRepository.Object;
+            _students = new List<Student>()
+            {
+                new Student() {Name = "nezir", Average= 4},
+                new Student() {Name = "mesut", Average= 2.6f},
+                new Student() {Name = "fatih", Average= 3},
+                new Student() {Name = "Aytül", Average= 3.5f},
+                new Student() {Name = "Halil", Average= 3},
+                new Student() {Name = "Salih", Average= 3},
+                new Student() {Name = "Beytullah", Average= 4},
+                new Student() {Name = "mesut2", Average= 1.5f},
+                new Student() {Name = "mesut3", Average= 1.6f},
+            };
+        }
+
         [Test]
         public void GetStudentListByGradeAverage_GetStudentListWhoGradeAverageIsEqualToFour_GivenTwoStudent()
         {
-            //arrange
-            Mock<IStudentRepository> mockStudentRepository = new Mock<IStudentRepository>();
-            mockStudentRepository.Setup(m => m.GetStudentListByGradeAverage(4)).Returns(new List<Student>
-            {
-                new Student(),
-                new Student()
-            });
-            IStudentRepository studentRepository = mockStudentRepository.Object;
-            var service = new StudentService(studentRepository);
+            //Arrange
+            _mockStudentRepository.Setup(x => x.GetStudents()).Returns(_students);
+            var service = new StudentService(_studentRepository);
+
+            //act
+            var result = service.GetStudentListByGradeAverage(4, true);
+
+            //assert
+            Assert.AreEqual(result.Count, 2);
+        }
+
+        [Test]
+        public void GetStudentListByGradeAverage_GetStudentListWhoGradeAverageIsEqualToThree_GivenOneStudent()
+        {
+            //Arrange
+            _mockStudentRepository.Setup(x => x.GetStudents()).Returns(_students);
+            var service = new StudentService(_studentRepository);
 
             //act 
-            var list = service.GetStudentListByGradeAverage(4);
+            var list = service.GetStudentListByGradeAverage(4, true);
 
             //assert
             Assert.AreEqual(list.Count, 2);
@@ -50,19 +86,12 @@ namespace TDDExample2.UnitTests
         [Test]
         public void GetStudentListByGradeAverage_GetStudentListWhoGradeAverageIsEqualToThree_GivenThreeStudent()
         {
-            //arrange
-            Mock<IStudentRepository> mockStudentRepository = new Mock<IStudentRepository>();
-            mockStudentRepository.Setup(m => m.GetStudentListByGradeAverage(3)).Returns(new List<Student>
-            {
-                new Student(),
-                new Student(),
-                new Student()
-            });
-            IStudentRepository studentRepository = mockStudentRepository.Object;
-            var service = new StudentService(studentRepository);
+            //Arrange
+            _mockStudentRepository.Setup(x => x.GetStudents()).Returns(_students);
+            var service = new StudentService(_studentRepository);
 
             //act 
-            var list = service.GetStudentListByGradeAverage(3);
+            var list = service.GetStudentListByGradeAverage(3, true);
 
             //assert
             Assert.AreEqual(list.Count, 3);
@@ -79,7 +108,7 @@ namespace TDDExample2.UnitTests
 
             //act
             //assert
-            Assert.Throws<ThereIsNoStudentException>(() => service.GetStudentListByGradeAverage(0));
+            Assert.Throws<ThereIsNoStudentException>(() => service.GetStudentListByGradeAverage(0, false));
         }
     }
 }

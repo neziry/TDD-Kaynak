@@ -29,13 +29,13 @@ namespace TDDExample2.Migrations
             //    );
             //
 
-            context.Students.AddOrUpdate(
-                new Student { Name = "Student", Average = 4 },
-                new Student { Name = "Student", Average = 4 },
-                new Student { Name = "Student", Average = 4 },
-                new Student { Name = "Student", Average = 3 },
-                new Student { Name = "Student", Average = 3 }
-                );
+            //context.Students.AddOrUpdate(
+            //    new Student { Name = "Ali", Average = 4 },
+            //    new Student { Name = "Veli", Average = 4 },
+            //    new Student { Name = "Ahmet", Average = 4 },
+            //    new Student { Name = "Mehmet", Average = 3 },
+            //    new Student { Name = "Cumali", Average = 3 }
+            //    );
         }
     }
 }

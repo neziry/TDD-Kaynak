@@ -5,6 +5,8 @@ namespace TDDExample2.Repositories
 {
     public interface IStudentRepository
     {
-        List<Student> GetStudentListByGradeAverage(int average);
+        List<Student> GetStudentListByGradeAverage(float average);
+
+        List<Student> GetStudents();
     }
 }

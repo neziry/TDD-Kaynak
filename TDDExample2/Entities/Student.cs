@@ -20,6 +20,6 @@ namespace TDDExample2.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public decimal Average { get; set; }
+        public float Average { get; set; }
     }
 }

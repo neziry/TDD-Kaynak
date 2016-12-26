@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TDDExample2.Entities;
 using TDDExample2.Repositories;
 
@@ -13,9 +14,15 @@ namespace TDDExample2.Services
             _studentRepository = studentRepository;
         }
 
-        public List<Student> GetStudentListByGradeAverage(int average)
+        public List<Student> GetStudentListByGradeAverage(float average, bool fromUnitTest)
         {
-            return _studentRepository.GetStudentListByGradeAverage(average);
+            return fromUnitTest ? _studentRepository.GetStudents().Where(x => x.Average == average).ToList() 
+                                : _studentRepository.GetStudentListByGradeAverage(average);
+        }
+
+        public List<Student> GetStudents()
+        {
+            return _studentRepository.GetStudents();
         }
     }
 }
