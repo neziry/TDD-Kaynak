@@ -1,6 +1,8 @@
 # TDD-Kaynak
 Sunum Kaynakları
 
+[Slideshare](http://www.slideshare.net/NezirYrekli/automated-testing-70436124)
+
 [MSDN Unit Test Basics](https://msdn.microsoft.com/en-us/library/hh694602.aspx, "Unit test temellleri")
 
 [Walkthrough: Creating and Running Unit Tests for Managed Code](https://msdn.microsoft.com/en-us/library/ms182532.aspx)
