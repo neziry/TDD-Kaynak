@@ -1,7 +1,7 @@
 # TDD-Kaynak
 Sunum Kaynakları
 
-[Slideshare](http://www.slideshare.net/NezirYrekli/automated-testing-70436124)
+[Slideshare](http://www.slideshare.net/NezirYrekli/test-driven-development-70452979)
 
 [MSDN Unit Test Basics](https://msdn.microsoft.com/en-us/library/hh694602.aspx, "Unit test temellleri")
 
