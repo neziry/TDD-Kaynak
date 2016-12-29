@@ -26,3 +26,7 @@ Sunum Kaynakları
 [İstanbulCoders Test Driven Development sunumu](https://www.youtube.com/watch?v=xILf6kmIzX0&t=2134s)
 
 [Test Driven Development and CI by Melih Sakarya](https://www.youtube.com/watch?v=dMURc-ia9M4)
+
+[Testing Controller Logic](https://docs.microsoft.com/en-us/aspnet/core/mvc/controllers/testing)
+
+[TestingControllersSample](https://github.com/aspnet/Docs/tree/master/aspnetcore/mvc/controllers/testing/sample/TestingControllersSample)
